@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },
@@ -13,6 +13,7 @@
     "@fontsource/cormorant-garamond": "^5.0.18",
     "@fontsource/great-vibes": "^5.0.18",
     "@supabase/supabase-js": "^2.45.4",
+    "buffer": "^6.0.3",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.5.4",
     "pix-utils": "^2.8.2",
@@ -22,6 +23,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/node": "^20.19.43",
     "@types/qrcode": "^1.5.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
