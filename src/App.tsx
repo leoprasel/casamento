@@ -1,23 +1,34 @@
+import Scene from '@/components/Scene'
+import Envelope from '@/scenes/Envelope'
+import Gate from '@/scenes/Gate'
+import Invitation from '@/scenes/Invitation'
 import { site } from '@/config/site'
 
 /**
- * Phase 1 skeleton: a blank-but-styled page that proves the toolchain,
- * palette and fonts render. The scroll-animation scenes (Phase 2) and the
- * gift registry (Phase 4) mount here in later features.
+ * Scroll-driven narrative: sealed envelope → gate reveal → invitation.
+ * The gift registry (Phase 4) mounts after <Invitation />.
  */
 export default function App() {
   return (
-    <main className="flex min-h-[100dvh] flex-col items-center justify-center bg-paper-texture bg-blush-50 px-6 text-center">
-      <p className="mb-4 font-serif text-sm uppercase tracking-[0.35em] text-ink-muted">
-        {site.tagline}
-      </p>
-      <h1 className="script-heading text-display">{site.couple.monogram}</h1>
-      <p className="mt-6 max-w-md font-serif text-xl text-ink-soft">
-        {site.invitationLine}
-      </p>
-      <p className="mt-10 font-serif text-lg text-ink-muted">
-        {site.weddingDateLabel}
-      </p>
+    <main className="bg-ivory">
+      {/* Scenes 1–2: the envelope opens */}
+      <Scene heightVh={3} id="envelope">
+        {(progress) => <Envelope progress={progress} />}
+      </Scene>
+
+      {/* Scene 3: the gate & ribbon */}
+      <Scene heightVh={3} id="gate">
+        {(progress) => <Gate progress={progress} />}
+      </Scene>
+
+      {/* Scene 4: the invitation */}
+      <Invitation />
+
+      {/* Registry section slots in here in Phase 4 */}
+
+      <footer className="bg-blush-50 px-6 py-12 text-center">
+        <p className="font-serif text-base text-ink-muted">{site.footerNote}</p>
+      </footer>
     </main>
   )
 }

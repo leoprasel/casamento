@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/config/site.ts","./src/lib/gifts.ts"],"version":"5.9.3"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/components/Countdown.tsx","./src/components/Scene.tsx","./src/components/ScrollHint.tsx","./src/config/site.ts","./src/lib/gifts.ts","./src/scenes/Envelope.tsx","./src/scenes/Gate.tsx","./src/scenes/Invitation.tsx"],"version":"5.9.3"}
