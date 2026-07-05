@@ -2,6 +2,7 @@ import Scene from '@/components/Scene'
 import Envelope from '@/scenes/Envelope'
 import Gate from '@/scenes/Gate'
 import Invitation from '@/scenes/Invitation'
+import Rsvp from '@/scenes/Rsvp'
 import Registry from '@/scenes/Registry'
 import { site } from '@/config/site'
 
@@ -24,6 +25,9 @@ export default function App() {
 
       {/* Scene 4: the invitation */}
       <Invitation />
+
+      {/* Scene 5: RSVP */}
+      <Rsvp />
 
       {/* Scene 6: gift registry */}
       <Registry />

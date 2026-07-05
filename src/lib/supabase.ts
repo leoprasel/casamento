@@ -57,3 +57,28 @@ export async function insertMessage(input: GuestMessage): Promise<InsertResult> 
   }
   return { ok: true }
 }
+
+export interface Rsvp {
+  guestName: string
+  guests: number
+  attending: boolean
+  note?: string
+}
+
+export async function insertRsvp(input: Rsvp): Promise<InsertResult> {
+  if (!client) {
+    return { ok: false, error: 'not-configured' }
+  }
+
+  const { error } = await client.from('rsvps').insert({
+    guest_name: input.guestName.trim().slice(0, NAME_MAX),
+    guests: Math.max(1, Math.min(20, Math.round(input.guests))),
+    attending: input.attending,
+    note: (input.note ?? '').trim().slice(0, MESSAGE_MAX) || null,
+  })
+
+  if (error) {
+    return { ok: false, error: error.message }
+  }
+  return { ok: true }
+}
