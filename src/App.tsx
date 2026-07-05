@@ -2,6 +2,7 @@ import Scene from '@/components/Scene'
 import Envelope from '@/scenes/Envelope'
 import Gate from '@/scenes/Gate'
 import Invitation from '@/scenes/Invitation'
+import Registry from '@/scenes/Registry'
 import { site } from '@/config/site'
 
 /**
@@ -24,7 +25,8 @@ export default function App() {
       {/* Scene 4: the invitation */}
       <Invitation />
 
-      {/* Registry section slots in here in Phase 4 */}
+      {/* Scene 6: gift registry */}
+      <Registry />
 
       <footer className="bg-blush-50 px-6 py-12 text-center">
         <p className="font-serif text-base text-ink-muted">{site.footerNote}</p>

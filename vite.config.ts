@@ -8,6 +8,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      // pix-utils' unused dynamic-payload path imports Node's Buffer; map it
+      // to the browser polyfill so the static BR Code builder bundles cleanly.
+      buffer: 'buffer',
     },
+  },
+  define: {
+    global: 'globalThis',
   },
 })
