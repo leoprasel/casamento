@@ -9,7 +9,14 @@ secondary method.
 > Full concept, architecture, data model and payment flows live in
 > [`docs/README.md`](docs/README.md). Build phases are in
 > [`docs/PLAN.md`](docs/PLAN.md). Gotchas in
-> [`docs/TIPS_AND_PITFALLS.md`](docs/TIPS_AND_PITFALLS.md).
+> [`docs/TIPS_AND_PITFALLS.md`](docs/TIPS_AND_PITFALLS.md). Remaining work is
+> tracked in [`docs/TODO.md`](docs/TODO.md).
+
+## Status
+
+Phases 1, 2, 4, 5 and 6 are implemented on `main`. What's left (accounts,
+design assets, real-payment tests, launch polish) is in
+[`docs/TODO.md`](docs/TODO.md).
 
 ## Stack
 
