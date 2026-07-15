@@ -77,10 +77,10 @@ The design cut-outs (arch, pillars, greenhouse, venue, couple) are already in
 - [ ] **Gift photos** — the registry cards show a "foto do presente" hatch
       placeholder until real images exist. Add photos to `public/gifts/` matching
       the filenames in `gifts.json` (cards fall back automatically until then).
-- [ ] **Optimize assets** — the design PNGs + `intro.mp4` are large (~15 MB total).
-      Convert the PNG cut-outs to WebP (keep alpha) and compress the video; target
-      a much smaller initial payload (TIPS #22). Below-the-fold images already use
-      `loading="lazy"`.
+- [x] **Optimize images** — the six PNG cut-outs are now WebP (8.9 MB → 0.34 MB).
+- [ ] **Compress the intro video** — `intro.mp4` is still ~5.8 MB (needs ffmpeg,
+      unavailable in the build sandbox). Re-encode smaller (e.g. H.264/H.265 or
+      WebM, scaled for mobile) to cut the initial payload further (TIPS #22).
 - [ ] **OG image** — add `public/og-image.jpg` (1200×630); it's referenced in
       `index.html` and is what shows in the WhatsApp preview (TIPS #25).
 
