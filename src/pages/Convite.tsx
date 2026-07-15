@@ -26,13 +26,13 @@ function Opener() {
     <section className="relative overflow-hidden bg-cream px-6 pb-11 pt-[82px]">
       {/* Lateral pillars framing the card */}
       <img
-        src="/assets/pilar-esq.png"
+        src="/assets/pilar-esq.webp"
         alt=""
         aria-hidden
         className="pointer-events-none absolute bottom-0 left-[-122px] z-[2] h-[620px] w-auto"
       />
       <img
-        src="/assets/pilar-dir.png"
+        src="/assets/pilar-dir.webp"
         alt=""
         aria-hidden
         className="pointer-events-none absolute bottom-0 right-[-120px] z-[2] h-[620px] w-auto"
@@ -44,7 +44,7 @@ function Opener() {
           style={{ background: 'rgba(245,243,234,0.62)' }}
         >
           <img
-            src="/assets/arco-topo.png"
+            src="/assets/arco-topo.webp"
             alt="Arco floral"
             className="absolute left-1/2 top-[-40px] w-[214px] -translate-x-1/2 drop-shadow-cutout"
           />
@@ -86,7 +86,7 @@ function Countdown() {
     <section className="bg-cream-band px-6 pb-11 pt-[70px]">
       <div className="relative mx-auto max-w-[360px] rounded-sm border border-olive/25 bg-cream-card px-[26px] pb-9 pt-[168px] text-center">
         <img
-          src="/assets/estufa-cutout.png"
+          src="/assets/estufa-cutout.webp"
           alt="Estufa"
           className="absolute left-1/2 top-[-85px] w-[236px] -translate-x-1/2 drop-shadow-cutout"
         />
@@ -127,7 +127,7 @@ function Local() {
     <section className="bg-cream px-6 pb-[92px] pt-[100px]">
       <div className="relative mx-auto max-w-[360px] rounded-sm border border-olive/25 bg-cream-card px-[30px] pb-[46px] pt-[150px] text-center">
         <img
-          src="/assets/chacara-llar-cutout.png"
+          src="/assets/chacara-llar-cutout.webp"
           alt={site.venue.name}
           className="absolute left-1/2 top-[-54px] w-[250px] -translate-x-1/2 drop-shadow-cutout"
         />
@@ -162,7 +162,7 @@ function Traje() {
     <section className="bg-cream-band px-6 pb-[92px] pt-[116px]">
       <div className="relative mx-auto max-w-[360px] rounded-sm border border-olive/25 bg-cream-card px-[30px] pb-[46px] pt-[132px] text-center">
         <img
-          src="/assets/dress-code-casal.png"
+          src="/assets/dress-code-casal.webp"
           alt="Traje"
           className="absolute left-[180px] top-[-45px] w-[322px] -translate-x-1/2 drop-shadow-cutout"
         />
