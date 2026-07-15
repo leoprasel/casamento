@@ -75,10 +75,11 @@ Serverless only (**never** `VITE_`-prefixed):
 The design cut-outs (arch, pillars, greenhouse, venue, couple) are already in
 `public/assets/` and wired in. Remaining:
 
-- [ ] **Gift photos** — the registry cards show a "foto do presente" hatch
-      placeholder until real images exist. Add photos to `public/gifts/` matching
-      the filenames in `gifts.json` (cards fall back automatically until then).
-- [x] **Optimize images** — the six PNG cut-outs are now WebP (8.9 MB → 0.34 MB).
+- [x] **Gift photos** — all 16 gifts have real product photos (normalized to
+      uniform WebP cards). A "foto do presente" hatch placeholder still auto-shows
+      for any gift missing an image.
+- [x] **Optimize images** — the six PNG cut-outs are now WebP (8.9 MB → 0.34 MB);
+      the 17 gift photos are ~119 KB total.
 - [ ] **Compress the intro video** — `intro.mp4` is still ~5.8 MB. Run
       `./scripts/compress-intro.sh` locally (needs ffmpeg) to re-encode it small +
       produce a WebM; then optionally add the WebM `<source>` (TIPS #22).
@@ -103,9 +104,6 @@ The design cut-outs (arch, pillars, greenhouse, venue, couple) are already in
 
 ## 🚀 Phase 7 — Launch polish
 
-- [ ] **OG image** — design a beautiful `public/og-image.jpg` (1200×630). This is
-      the real landing page: 90%+ of guests arrive via the WhatsApp preview
-      (TIPS #25). Confirm the `og:*` tags in `index.html`.
 - [x] **Accessibility basics** — keyboard focus-visible outlines, aria-labels on
       form fields, alt text on imagery, reduced-motion handling.
 - [ ] **Lighthouse** — full mobile performance + a11y pass on the deployed site;
