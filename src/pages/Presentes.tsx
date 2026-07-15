@@ -30,9 +30,26 @@ export default function Presentes() {
       </div>
 
       <div className="mt-11 grid w-full grid-cols-2 gap-4">
-        {gifts.map((gift) => (
-          <GiftCard key={gift.id} gift={gift} />
-        ))}
+        {gifts
+          .filter((g) => !g.freeAmount)
+          .map((gift) => (
+            <GiftCard key={gift.id} gift={gift} />
+          ))}
+      </div>
+
+      {/* Free-amount option — a distinct full-width button at the end. */}
+      <div className="mt-6 w-full border border-olive/25 bg-cream-input p-8 text-center">
+        <div className="eyebrow">Se preferir</div>
+        <p className="mx-auto mt-3 max-w-[360px] text-[16px] leading-[1.6] text-olive-body">
+          Você também pode nos presentear com o valor que desejar, do jeitinho que fizer sentido
+          pra você. 💝
+        </p>
+        <Link
+          to="/pagamento?gift=valor-livre"
+          className="btn-dark mx-auto mt-6 max-w-[320px] !py-[14px] !text-[13px]"
+        >
+          O valor que desejar →
+        </Link>
       </div>
     </div>
   )
