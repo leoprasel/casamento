@@ -59,10 +59,9 @@ Serverless only (**never** `VITE_`-prefixed):
 
 ## ✍️ Content (placeholders from the design await real values)
 
-- [ ] `src/config/site.ts`: real **venue address + CEP** (currently
-      "[ Endereço a definir ]"), Google Maps link, **dress-code palette** note,
-      and the WhatsApp number. Confirm the ceremony **time** (countdown targets
-      16:00 BRT on 2027-09-11).
+- [x] Real **venue address + CEP** and Google Maps link (Chácara Llar).
+- [ ] `src/config/site.ts`: **dress-code palette** note and the WhatsApp number.
+      Confirm the ceremony **time** (countdown targets 16:00 BRT on 2027-09-11).
 - [ ] Finalize the gift list in `src/data/gifts.json` — names, prices, and the
       per-gift image filenames. Keep framing symbolic (no "comprar").
 - [ ] Set the real **Pix key** via `VITE_PIX_KEY` (a chave aleatória).
