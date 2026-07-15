@@ -63,8 +63,9 @@ Serverless only (**never** `VITE_`-prefixed):
 - [x] **WhatsApp number** wired (RSVP has a WhatsApp fallback + the number in config).
 - [ ] `src/config/site.ts`: **dress-code palette** note (still "[ ... ]"). Confirm the
       ceremony **time** (countdown targets 16:00 BRT on 2027-09-11).
-- [ ] Finalize the gift list in `src/data/gifts.json` — names, prices, and the
-      per-gift image filenames. Keep framing symbolic (no "comprar").
+- [x] Real gift catalog (16 items) with the couple's product photos wired in.
+      Open: confirm the list is complete; decide on **cotas** for the big-ticket
+      items (cama/sofá/mesa); pick the cookware photo (cream vs the black alt).
 - [ ] Set the real **Pix key** via `VITE_PIX_KEY` (a chave aleatória).
 
 ---
