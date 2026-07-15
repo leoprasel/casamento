@@ -13,16 +13,19 @@ against.
 
 ## ✅ Done (in the codebase)
 
-- [x] **Phase 1** — Vite + React + TS skeleton, Tailwind design tokens
-  (blush/champagne/ivory/ink), script + serif fonts, `vercel.json`, `.env.example`.
-- [x] **Phase 2** — Scroll animation engine: `<Scene>` sticky-stage primitive,
-  Envelope → Gate → Invitation scenes, Countdown, `useReducedMotion` fallbacks.
-- [x] **Phase 4** — Gift registry grid + checkout modal (Pix-dominant), client-side
-  EMV BR Code + dark-on-white QR, "valor livre" card, guest message form.
-- [x] **Phase 5** — `api/card-checkout.ts` (server-side pricing, zod validation,
+- [x] **Design handoff implemented** — the site now matches the Leonardo & Isabela
+  design: olive/botanical cream-paper theme, Pinyon Script / Cormorant Garamond /
+  JetBrains Mono, 440px phone column, intro video (freeze-on-last-frame + skip/mute
+  + `localStorage` seen flag).
+- [x] **Routes** — `/` Convite (intro + 5 cards), `/confirmar` RSVP (dynamic guest
+  rows), `/presentes` registry, `/pagamento` checkout. react-router + SPA rewrite.
+- [x] **Payments** — Pix tab wired to the real EMV BR Code + dark-on-white QR +
+  copia-e-cola; card tab collects name/CPF/installments and redirects to Asaas
+  hosted checkout (no raw card data on the site).
+- [x] **Serverless** — `api/card-checkout.ts` (server-side pricing, zod validation,
   CPF, installments, CORS lock, IP throttle) + optional token-validated webhook.
-- [x] **Phase 6** — RSVP section (WhatsApp + Supabase form) and
-  `supabase/schema.sql` (RLS INSERT-only).
+- [x] **Data** — Supabase `messages` + `rsvps` with RLS INSERT-only
+  (`supabase/schema.sql`); RSVP writes one row per confirmation.
 
 ---
 
@@ -54,31 +57,32 @@ Serverless only (**never** `VITE_`-prefixed):
 
 ---
 
-## ✍️ Content
+## ✍️ Content (placeholders from the design await real values)
 
-- [ ] Fill in real copy in `src/config/site.ts`: couple names, monogram, wedding
-      datetime, venues + maps links, schedule, dress code, RSVP deadline,
-      WhatsApp number, footer note.
-- [ ] Finalize the gift list in `src/data/gifts.json` — 15–30 symbolic gifts across
-      a price ladder. Keep playful names; framing must stay symbolic (no "comprar").
-- [ ] Decide the Pix txid convention display wording ("identificador") — already
-      wired, just confirm it reads well to guests.
+- [ ] `src/config/site.ts`: real **venue address + CEP** (currently
+      "[ Endereço a definir ]"), Google Maps link, **dress-code palette** note,
+      and the WhatsApp number. Confirm the ceremony **time** (countdown targets
+      16:00 BRT on 2027-09-11).
+- [ ] Finalize the gift list in `src/data/gifts.json` — names, prices, and the
+      per-gift image filenames. Keep framing symbolic (no "comprar").
+- [ ] Set the real **Pix key** via `VITE_PIX_KEY` (a chave aleatória).
 
 ---
 
-## 🎨 Phase 3 — Art integration (needs exported design assets)
+## 🎨 Art & assets
 
-The scenes currently use tasteful CSS placeholders. To finish the look:
+The design cut-outs (arch, pillars, greenhouse, venue, couple) are already in
+`public/assets/` and wired in. Remaining:
 
-- [ ] Export layered art (envelope body/flap/seal; gate left/right/ribbon;
-      invitation florals) as WebP/AVIF at ~2x, mobile-portrait masters.
-- [ ] Drop layers into `public/scenes/` and swap the placeholder panels in
-      `src/scenes/Envelope.tsx` and `Gate.tsx`; tune transform-origins + easings.
-- [ ] Generate the ~15–30 gift illustrations in ONE cohesive style; export at
-      800×600 WebP into `public/gifts/` (filenames already referenced in
-      `gifts.json`). Cards auto-fall back to a styled placeholder until then.
-- [ ] Optimize: preload scene-1 layers, lazy-load later scenes, keep initial
-      payload < 2.5 MB (TIPS #22).
+- [ ] **Gift photos** — the registry cards show a "foto do presente" hatch
+      placeholder until real images exist. Add photos to `public/gifts/` matching
+      the filenames in `gifts.json` (cards fall back automatically until then).
+- [ ] **Optimize assets** — the design PNGs + `intro.mp4` are large (~15 MB total).
+      Convert the PNG cut-outs to WebP (keep alpha) and compress the video; target
+      a much smaller initial payload (TIPS #22). Below-the-fold images already use
+      `loading="lazy"`.
+- [ ] **OG image** — add `public/og-image.jpg` (1200×630); it's referenced in
+      `index.html` and is what shows in the WhatsApp preview (TIPS #25).
 
 ---
 
