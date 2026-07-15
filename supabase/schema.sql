@@ -29,6 +29,11 @@ create policy "anon insert messages"
     and char_length(coalesce(message, '')) <= 500
   );
 
+-- Table-level privilege (needed when "Automatically expose new tables" is OFF).
+-- INSERT only — RLS above still governs what may be inserted.
+grant usage on schema public to anon;
+grant insert on public.messages to anon;
+
 -- ─────────────────────────────────────────────────────────────
 -- rsvps: on-site RSVP confirmations (optional — you may prefer WhatsApp)
 -- ─────────────────────────────────────────────────────────────
@@ -53,3 +58,5 @@ create policy "anon insert rsvps"
     and guests between 1 and 20
     and char_length(coalesce(note, '')) <= 500
   );
+
+grant insert on public.rsvps to anon;
