@@ -44,6 +44,13 @@ export default function Confirmar() {
     }
   }
 
+  const namedGuests = guests.map((g) => g.name.trim()).filter(Boolean)
+  const whatsappHref = `https://wa.me/${site.rsvp.whatsappNumber}?text=${encodeURIComponent(
+    `Olá! Confirmo presença no casamento de ${site.couple.partnerA} & ${site.couple.partnerB} 💌` +
+      (namedGuests.length ? `\nConvidados: ${namedGuests.join(', ')}` : '') +
+      (message.trim() ? `\nRecado: ${message.trim()}` : ''),
+  )}`
+
   return (
     <div className="phone flex flex-col items-center px-6 pb-20 pt-14">
       <Link
@@ -76,6 +83,7 @@ export default function Confirmar() {
                   value={g.name}
                   onChange={(e) => changeGuest(g.id, e.target.value)}
                   placeholder="Nome completo do convidado"
+                  aria-label={`Nome do convidado ${i + 1}`}
                   maxLength={80}
                   className="field flex-1"
                 />
@@ -114,6 +122,15 @@ export default function Confirmar() {
             <button onClick={submit} className="btn-dark mt-[30px] !py-5 !text-[15px] !tracking-[0.28em]">
               Enviar Confirmação →
             </button>
+
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 block border border-olive/40 bg-transparent px-6 py-4 text-center font-serif text-[13px] font-semibold uppercase tracking-[0.22em] text-olive transition-colors hover:bg-olive/5"
+            >
+              Confirmar pelo WhatsApp
+            </a>
           </div>
         ) : (
           <div className="mt-[60px] animate-fadeUp border border-olive/25 bg-cream-input px-8 py-14 text-center">

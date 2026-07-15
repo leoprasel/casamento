@@ -60,8 +60,9 @@ Serverless only (**never** `VITE_`-prefixed):
 ## ✍️ Content (placeholders from the design await real values)
 
 - [x] Real **venue address + CEP** and Google Maps link (Chácara Llar).
-- [ ] `src/config/site.ts`: **dress-code palette** note and the WhatsApp number.
-      Confirm the ceremony **time** (countdown targets 16:00 BRT on 2027-09-11).
+- [x] **WhatsApp number** wired (RSVP has a WhatsApp fallback + the number in config).
+- [ ] `src/config/site.ts`: **dress-code palette** note (still "[ ... ]"). Confirm the
+      ceremony **time** (countdown targets 16:00 BRT on 2027-09-11).
 - [ ] Finalize the gift list in `src/data/gifts.json` — names, prices, and the
       per-gift image filenames. Keep framing symbolic (no "comprar").
 - [ ] Set the real **Pix key** via `VITE_PIX_KEY` (a chave aleatória).
@@ -77,11 +78,12 @@ The design cut-outs (arch, pillars, greenhouse, venue, couple) are already in
       placeholder until real images exist. Add photos to `public/gifts/` matching
       the filenames in `gifts.json` (cards fall back automatically until then).
 - [x] **Optimize images** — the six PNG cut-outs are now WebP (8.9 MB → 0.34 MB).
-- [ ] **Compress the intro video** — `intro.mp4` is still ~5.8 MB (needs ffmpeg,
-      unavailable in the build sandbox). Re-encode smaller (e.g. H.264/H.265 or
-      WebM, scaled for mobile) to cut the initial payload further (TIPS #22).
-- [ ] **OG image** — add `public/og-image.jpg` (1200×630); it's referenced in
-      `index.html` and is what shows in the WhatsApp preview (TIPS #25).
+- [ ] **Compress the intro video** — `intro.mp4` is still ~5.8 MB. Run
+      `./scripts/compress-intro.sh` locally (needs ffmpeg) to re-encode it small +
+      produce a WebM; then optionally add the WebM `<source>` (TIPS #22).
+- [x] **OG image** — `public/og-image.jpg` (1200×630, on-brand) generated and wired
+      in `index.html`. ⚠️ After deploying, change `og:image` to the **absolute**
+      URL (`https://<domain>/og-image.jpg`) — WhatsApp needs an absolute URL (TIPS #25).
 
 ---
 
@@ -103,8 +105,10 @@ The design cut-outs (arch, pillars, greenhouse, venue, couple) are already in
 - [ ] **OG image** — design a beautiful `public/og-image.jpg` (1200×630). This is
       the real landing page: 90%+ of guests arrive via the WhatsApp preview
       (TIPS #25). Confirm the `og:*` tags in `index.html`.
-- [ ] **Lighthouse** — mobile performance + accessibility pass: focus states,
-      alt text, contrast on blush-on-blush text.
+- [x] **Accessibility basics** — keyboard focus-visible outlines, aria-labels on
+      form fields, alt text on imagery, reduced-motion handling.
+- [ ] **Lighthouse** — full mobile performance + a11y pass on the deployed site;
+      double-check color contrast on the small olive-on-cream eyebrow labels.
 - [ ] **Cross-device matrix** — iOS Safari (the boss fight, TIPS #20), Android
       Chrome, one desktop. Watch for `100vh`/URL-bar jumps (we use `dvh`).
 - [ ] **Fonts** — verify the script display font is preloaded so the headline

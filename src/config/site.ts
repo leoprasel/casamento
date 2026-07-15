@@ -38,7 +38,7 @@ export const site = {
 
   rsvp: {
     /** WhatsApp deep-link fallback (zero storage). Digits only, with country code. */
-    whatsappNumber: '5511999999999',
+    whatsappNumber: '5541991258596',
   },
 } as const
 

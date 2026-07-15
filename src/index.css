@@ -32,6 +32,17 @@
     @apply text-olive-placeholder;
   }
 
+  /* Keyboard focus visibility (fields intentionally drop the default outline
+     on mouse focus, so restore a clear one for keyboard users). */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #6c7860;
+    outline-offset: 2px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;

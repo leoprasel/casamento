@@ -113,6 +113,7 @@ function FreeAmount({ gift, onConfirm }: { gift: Gift; onConfirm: (v: number) =>
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder="100"
+            aria-label="Valor da contribuição em reais"
             className="w-full bg-transparent font-serif text-[20px] text-olive outline-none"
           />
         </div>
@@ -246,6 +247,7 @@ function CardPanel({ gift, amount, onUsePix }: { gift: Gift; amount: number; onU
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Como impresso no cartão"
+        aria-label="Nome no cartão"
         maxLength={80}
         className="mb-5 w-full border border-olive/25 bg-cream px-4 py-[14px] font-serif text-[18px] text-olive outline-none"
       />
@@ -259,6 +261,7 @@ function CardPanel({ gift, amount, onUsePix }: { gift: Gift; amount: number; onU
         value={cpf}
         onChange={(e) => setCpf(e.target.value)}
         placeholder="000.000.000-00"
+        aria-label="CPF"
         className="mb-5 w-full border border-olive/25 bg-cream px-4 py-[14px] font-mono text-[16px] text-olive outline-none"
       />
 
@@ -268,6 +271,7 @@ function CardPanel({ gift, amount, onUsePix }: { gift: Gift; amount: number; onU
       <select
         value={installments}
         onChange={(e) => setInstallments(Number(e.target.value))}
+        aria-label="Número de parcelas"
         className="mb-2 w-full border border-olive/25 bg-cream px-4 py-[14px] font-serif text-[18px] text-olive outline-none"
       >
         {Array.from({ length: MAX_INSTALLMENTS }, (_, i) => i + 1).map((n) => (
