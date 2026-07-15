@@ -29,25 +29,30 @@ against.
 
 ---
 
-## 🔑 Phase 0 — Accounts & secrets (no code, blocks launch)
+## 🔑 Phase 0 — Accounts & secrets
 
+- [x] **Vercel** — deployed and LIVE at https://casamento-xi-kohl.vercel.app
+- [x] **Pix key** — set to the couple's phone (`+5541991258596`), merchant
+      LEONARDO PRASEL / QUATRO BARRAS. QR generates with the value pre-filled.
+- [x] **Supabase project** — created, `supabase/schema.sql` run (with anon INSERT
+      grants), URL + anon key wired in Vercel. RSVP + messages inserts verified
+      (HTTP 201); reads blocked by RLS. ⚠️ regenerate the Secret key that was
+      shared in chat.
 - [ ] **Asaas (Pessoa Física / CPF)** — sign up, upload RG/CNH, wait for approval.
-  - [ ] Generate a **sandbox** API key; test with Asaas test cards.
-  - [ ] Generate the **production** API key (store in a password manager only).
-  - [ ] Confirm current card rate, promo eligibility, max `installmentCount`, and
-        settlement timing (D+N). Decide juros policy (currently **you-absorb** via
-        `totalValue` in `api/_lib/asaas.ts`).
-- [ ] **Pix key** — create a **chave aleatória** at your bank (don't use CPF/phone/email).
-- [ ] **Supabase project** (free tier) — note URL + anon key; run `supabase/schema.sql`.
-- [ ] **Vercel account** — import the repo, set env vars (below).
+      This is the only account left; it enables the credit-card button (Pix works
+      without it). Then set `ASAAS_API_KEY`, `ASAAS_BASE_URL`, `ALLOWED_ORIGIN`.
+  - [ ] Sandbox key → test cards (incl. a 3x charge); then production key.
+  - [ ] Confirm current card rate, max `installmentCount`, settlement (D+N).
 - [ ] **Accountant** — ask the ITCMD (state gift-tax) question in writing, early.
 
-### Environment variables to set in Vercel
+### Environment variables
 
-Frontend (safe to be public — bundled into JS):
-- [ ] `VITE_PIX_KEY`
-- [ ] `VITE_PIX_MERCHANT_NAME` (≤ 25 chars, ASCII), `VITE_PIX_MERCHANT_CITY` (≤ 15)
-- [ ] `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
+Set in Vercel (all environments):
+- [x] `VITE_PIX_KEY`, `VITE_PIX_MERCHANT_NAME`, `VITE_PIX_MERCHANT_CITY`
+- [x] `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
+- [ ] `ASAAS_API_KEY`, `ASAAS_BASE_URL` (serverless — when Asaas is ready)
+- [ ] `ALLOWED_ORIGIN` = https://casamento-xi-kohl.vercel.app (CORS lock for the
+      card function)
 
 Serverless only (**never** `VITE_`-prefixed):
 - [ ] `ASAAS_API_KEY`, `ASAAS_BASE_URL` (sandbox vs prod)
