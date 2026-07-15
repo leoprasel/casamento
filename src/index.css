@@ -1,8 +1,11 @@
-@import '@fontsource/great-vibes/400.css';
+@import '@fontsource/pinyon-script/400.css';
 @import '@fontsource/cormorant-garamond/400.css';
+@import '@fontsource/cormorant-garamond/400-italic.css';
 @import '@fontsource/cormorant-garamond/500.css';
 @import '@fontsource/cormorant-garamond/600.css';
 @import '@fontsource/cormorant-garamond/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
 
 @tailwind base;
 @tailwind components;
@@ -19,13 +22,16 @@
   }
 
   body {
-    @apply bg-ivory text-ink font-serif antialiased;
-    /* Use dynamic viewport unit friendly baseline; avoid 100vh jumps on iOS */
-    min-height: 100dvh;
+    @apply bg-page font-serif text-olive antialiased;
+    margin: 0;
     text-rendering: optimizeLegibility;
   }
 
-  /* Respect reduced motion globally as a safety net */
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-olive-placeholder;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -41,21 +47,49 @@
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-blush-500 px-6 py-3
-      font-serif text-lg font-semibold tracking-wide text-ivory shadow-card
-      transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-lift
-      active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50;
+  /* Centered mobile "phone" column the whole site lives in. */
+  .phone {
+    @apply relative mx-auto min-h-[100dvh] w-full max-w-[440px] bg-cream shadow-column;
   }
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-blush-300
-      bg-ivory px-6 py-3 font-serif text-lg font-medium tracking-wide text-ink
-      shadow-card transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-lift
-      active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50;
+  /* Eyebrow / label pattern used across every screen. */
+  .eyebrow {
+    @apply font-serif text-[11px] uppercase tracking-[0.34em] text-olive-muted;
   }
 
-  .script-heading {
-    @apply font-script text-blush-500;
+  /* Script display title. */
+  .display {
+    @apply font-script font-normal text-olive;
+  }
+
+  /* Primary dark button. */
+  .btn-dark {
+    @apply block w-full cursor-pointer border-none bg-olive px-6 py-4 text-center font-serif
+      text-[13px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors
+      hover:bg-olive-body disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Secondary outline button. */
+  .btn-outline {
+    @apply block w-full cursor-pointer border border-olive/50 bg-transparent px-6 py-4 text-center
+      font-serif text-[13px] font-semibold uppercase tracking-[0.22em] text-olive
+      transition-colors hover:bg-olive/5;
+  }
+
+  /* Text input / textarea. */
+  .field {
+    @apply w-full border border-olive/25 bg-cream-input px-[18px] py-[15px] font-serif
+      text-[19px] text-olive outline-none focus:border-olive/50;
+  }
+}
+
+@layer utilities {
+  /* Divider ornament: 30px line · 5px diamond (45°) · 30px line. */
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: rgba(59, 74, 58, 0.3);
   }
 }
