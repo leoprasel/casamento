@@ -158,5 +158,16 @@
     "category": "casa-nova",
     "claimed": false,
     "featured": true
+  },
+  {
+    "id": "valor-livre",
+    "title": "O valor que desejar",
+    "description": "Contribua com o valor que fizer sentido pra você.",
+    "price": 0,
+    "image": "",
+    "category": "casa-nova",
+    "claimed": false,
+    "featured": false,
+    "freeAmount": true
   }
 ]
