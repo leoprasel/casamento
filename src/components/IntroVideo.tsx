@@ -1,35 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 
-const SEEN_KEY = 'convite_intro_seen'
-
 /**
- * Opening intro video that freezes on its final frame and blends into the
- * scroll (design §1.0). Locks body scroll while playing; a localStorage flag
- * skips the replay on return visits (starts paused on the last frame). Guests
- * who prefer reduced motion skip straight to the frozen last frame.
+ * Opening intro video that plays on every page load / reload (design §1.0),
+ * then freezes on its final frame and blends into the scroll. Locks body scroll
+ * while playing. Guests who prefer reduced motion skip straight to the frozen
+ * last frame.
  */
 export default function IntroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const reduce = useReducedMotion()
 
-  const seenInitial = (() => {
-    try {
-      return localStorage.getItem(SEEN_KEY) === '1'
-    } catch {
-      return false
-    }
-  })()
-
-  const [done, setDone] = useState(seenInitial || !!reduce)
+  const [done, setDone] = useState(!!reduce)
   const [muted, setMuted] = useState(true)
 
   function finishIntro() {
-    try {
-      localStorage.setItem(SEEN_KEY, '1')
-    } catch {
-      /* ignore */
-    }
     document.body.style.overflow = ''
     setDone(true)
   }
@@ -48,7 +33,7 @@ export default function IntroVideo() {
 
   useEffect(() => {
     const v = videoRef.current
-    const alreadyDone = seenInitial || !!reduce
+    const alreadyDone = !!reduce
 
     const onLoadedMeta = () => {
       if (alreadyDone) freezeLastFrame()
