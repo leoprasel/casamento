@@ -4,63 +4,47 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Blush / champagne wedding palette (design tokens)
-        blush: {
-          50: '#fdf6f4',
-          100: '#fbeae6',
-          200: '#f6d4cc',
-          300: '#eeb5a8',
-          400: '#e29385',
-          500: '#d1735f',
-          600: '#b95846',
+        // Botanical olive + cream paper palette (design handoff tokens)
+        page: '#cdc7b6', // outer body behind the phone column
+        cream: {
+          DEFAULT: '#F1EEE4', // paper / main column
+          band: '#E7E2D4', // alternating section band
+          card: '#F5F3EA', // section card fill
+          input: '#F7F5EC', // inputs, gift cards, thank-you cards
         },
-        champagne: {
-          50: '#fbf8f1',
-          100: '#f5edda',
-          200: '#ebdcb9',
-          300: '#dcc38a',
-          400: '#cba85f',
+        olive: {
+          DEFAULT: '#3B4A3A', // ink / primary dark / buttons
+          body: '#4A5644', // paragraph text
+          muted: '#6C7860', // eyebrows, labels, secondary
+          accent: '#8A9179', // ampersand, divider diamond
+          placeholder: '#A7A896', // input placeholders, mono captions
         },
-        ivory: '#fffdf9',
-        ink: {
-          DEFAULT: '#3d2b28',
-          soft: '#6b544f',
-          muted: '#9a837d',
-        },
-        gold: '#b8935a',
+        night: '#23261F', // intro video background
       },
       fontFamily: {
-        // Great Vibes = script display; Cormorant Garamond = quiet body serif
-        script: ['"Great Vibes"', 'cursive'],
+        script: ['"Pinyon Script"', 'cursive'],
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-      },
-      fontSize: {
-        // Fluid display scale
-        display: ['clamp(3rem, 12vw, 7rem)', { lineHeight: '1.05' }],
-        title: ['clamp(2rem, 7vw, 4rem)', { lineHeight: '1.1' }],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        card: '0 10px 30px -12px rgba(61, 43, 40, 0.25)',
-        lift: '0 18px 40px -14px rgba(61, 43, 40, 0.35)',
-        seal: '0 4px 14px -2px rgba(185, 88, 70, 0.5)',
-      },
-      backgroundImage: {
-        'paper-texture':
-          'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0%, transparent 45%), radial-gradient(circle at 80% 0%, rgba(245,237,218,0.5) 0%, transparent 40%)',
+        column: '0 0 90px rgba(46,58,44,0.22)',
+        cutout: '0 10px 16px rgba(46,58,44,0.14)',
       },
       keyframes: {
-        'fade-up': {
-          '0%': { opacity: '0', transform: 'translateY(16px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        floatArrow: {
+          '0%,100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(6px)' },
         },
-        'bounce-soft': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(8px)' },
+        fadeIn: { from: { opacity: '0' }, to: { opacity: '1' } },
+        fadeUp: {
+          from: { opacity: '0', transform: 'translateY(20px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {
-        'fade-up': 'fade-up 0.8s ease-out both',
-        'bounce-soft': 'bounce-soft 1.8s ease-in-out infinite',
+        floatArrow: 'floatArrow 2.2s ease-in-out infinite',
+        fadeIn: 'fadeIn 1s ease',
+        fadeUp: 'fadeUp 0.5s ease both',
       },
     },
   },

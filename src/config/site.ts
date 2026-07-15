@@ -1,69 +1,42 @@
 /**
- * Central content config — edit copy, dates and venues here.
- * Keeps the "content inventory" (PLAN 0.5) in one typed place.
+ * Central content config — edit copy, dates and venue here.
+ * Values marked "[ ... ]" are placeholders from the design handoff awaiting
+ * the couple's real details.
  */
-
-export interface VenueInfo {
-  label: string
-  name: string
-  address: string
-  mapsUrl?: string
-  time?: string
-}
-
-export interface ScheduleItem {
-  time: string
-  title: string
-  description?: string
-}
 
 export const site = {
   couple: {
-    partnerA: 'Maria',
-    partnerB: 'João',
-    /** Shown in the big script headline */
-    monogram: 'M & J',
+    partnerA: 'Leonardo',
+    partnerB: 'Isabela',
+    /** "Leonardo & Isabela · 11.09.2027" — reused as an eyebrow across pages. */
+    line: 'Leonardo & Isabela · 11.09.2027',
   },
 
-  /** Wedding date/time in ISO 8601 (local). Drives the countdown. */
-  weddingDate: '2026-11-07T16:00:00-03:00',
-  weddingDateLabel: '7 de novembro de 2026',
+  /** Wedding date/time in ISO 8601. Drives the countdown. */
+  weddingDate: '2027-09-11T16:00:00-03:00',
+  weddingDateLabel: '11 de setembro de 2027',
+  weddingDateShort: '11 · 09 · 2027',
 
-  tagline: 'Vamos nos casar',
-  invitationLine: 'Com alegria, convidamos você para celebrar o nosso amor.',
+  invitationLine:
+    'convidam você para celebrar o dia em que suas vidas se tornarão uma só história.',
 
-  venues: [
-    {
-      label: 'Cerimônia',
-      name: 'Capela Nossa Senhora',
-      address: 'Rua das Flores, 123 — São Paulo, SP',
-      time: '16h00',
-      mapsUrl: 'https://maps.google.com/?q=Capela+Nossa+Senhora',
-    },
-    {
-      label: 'Recepção',
-      name: 'Espaço Jardim',
-      address: 'Av. das Palmeiras, 456 — São Paulo, SP',
-      time: '18h00',
-      mapsUrl: 'https://maps.google.com/?q=Espaco+Jardim',
-    },
-  ] as VenueInfo[],
+  venue: {
+    name: 'Chácara Llar',
+    // Placeholder — replace with the real address + CEP.
+    addressLines: ['[ Endereço a definir ]', 'Rua · Bairro · Cidade — Estado', 'CEP 00000-000'],
+    mapsUrl: 'https://maps.google.com',
+  },
 
-  dressCode: 'Traje esporte fino',
-
-  schedule: [
-    { time: '16h00', title: 'Cerimônia', description: 'Chegue com 20 minutos de antecedência 🌸' },
-    { time: '18h00', title: 'Recepção & Jantar' },
-    { time: '20h00', title: 'Festa', description: 'Pista aberta até o amanhecer 🎉' },
-  ] as ScheduleItem[],
+  dressCode: {
+    label: 'Esporte fino',
+    // Placeholder note from the design.
+    note: '[ Paleta e detalhes a definir — pedimos que evitem o branco, reservado à noiva. ]',
+  },
 
   rsvp: {
-    deadlineLabel: 'até 30 de setembro',
     /** WhatsApp deep-link fallback (zero storage). Digits only, with country code. */
     whatsappNumber: '5511999999999',
   },
-
-  footerNote: 'Os presentes são contribuições simbólicas ao casal ❤️',
 } as const
 
 export type Site = typeof site

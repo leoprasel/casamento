@@ -1,27 +1,33 @@
-# Casamento — Wedding Invitation & Gift Registry
+# Casamento — Leonardo & Isabela
 
-A single-page, scroll-driven animated wedding invitation with an integrated
-gift registry ("lista de presentes"), built to run at near-zero infrastructure
-cost and to minimize payment fees by routing gifts through **Pix (free)** as the
-primary method and **Asaas credit-card links** (with parcelamento) as the
-secondary method.
+A mobile-first wedding invitation site (in Brazilian Portuguese) with an
+integrated gift registry ("lista de presentes"), built to run at near-zero
+infrastructure cost and to minimize payment fees by routing gifts through
+**Pix (free)** as the primary method and **Asaas credit-card checkout** (with
+parcelamento) as the secondary method.
 
-> Full concept, architecture, data model and payment flows live in
-> [`docs/README.md`](docs/README.md). Build phases are in
-> [`docs/PLAN.md`](docs/PLAN.md). Gotchas in
-> [`docs/TIPS_AND_PITFALLS.md`](docs/TIPS_AND_PITFALLS.md). Remaining work is
-> tracked in [`docs/TODO.md`](docs/TODO.md).
+The UI follows the delivered design handoff: an olive/botanical, cream-paper
+editorial invitation that opens with an intro video freezing into a vertical
+scroll of cards, then routes to RSVP, registry, and checkout screens.
+
+> The original concept/architecture briefs live in
+> [`docs/README.md`](docs/README.md), [`docs/PLAN.md`](docs/PLAN.md) and
+> [`docs/TIPS_AND_PITFALLS.md`](docs/TIPS_AND_PITFALLS.md) (some visual details
+> there predate the design handoff — payments/architecture still apply).
+> Remaining work is tracked in [`docs/TODO.md`](docs/TODO.md).
 
 ## Status
 
-Phases 1, 2, 4, 5 and 6 are implemented on `main`. What's left (accounts,
-design assets, real-payment tests, launch polish) is in
+The full site is implemented on `main` per the design handoff (invitation,
+RSVP, registry, secure Pix + Asaas checkout). What's left (accounts, real
+content, gift photos, real-payment tests, launch polish) is in
 [`docs/TODO.md`](docs/TODO.md).
 
 ## Stack
 
-Vite · React 18 · TypeScript · Tailwind CSS · Framer Motion · `pix-utils` +
-`qrcode` · Vercel (static + serverless) · Asaas API (CPF) · Supabase (messages).
+Vite · React 18 · TypeScript · Tailwind CSS · react-router · Framer Motion ·
+`pix-utils` + `qrcode` · Vercel (static + serverless) · Asaas API (CPF) ·
+Supabase (messages/RSVP).
 
 ## Getting started
 
@@ -41,15 +47,17 @@ npm run preview
 ## Project layout
 
 ```
-docs/                 # concept, plan, tips (the source-of-truth briefs)
-public/               # static assets (favicon, gift images, scene layers)
+docs/                 # original concept/plan/tips briefs + TODO
+public/assets/        # design assets (intro.mp4, cut-outs, pillars, arch)
 src/
-  config/site.ts      # couple names, date, venues, schedule (edit copy here)
+  config/site.ts      # couple names, date, venue, dress code (edit copy here)
   data/gifts.json     # gift catalog (static)
   lib/gifts.ts        # zod-validated typed loader (reused server-side)
-  scenes/             # scroll-animation scenes (Phase 2)
-  components/         # GiftCard, CheckoutModal, PixQr, Countdown, ...
-api/                  # Vercel serverless functions (card checkout — Phase 5)
+  lib/pix.ts          # client-side Pix BR Code builder
+  pages/              # Convite, Confirmar, Presentes, Pagamento (routes)
+  components/         # IntroVideo, Ornament
+  hooks/useCountdown  # countdown to the wedding datetime
+api/                  # Vercel serverless functions (card checkout)
 ```
 
 ## Environment variables
