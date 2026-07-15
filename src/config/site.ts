@@ -22,9 +22,12 @@ export const site = {
 
   venue: {
     name: 'Chácara Llar',
-    // Placeholder — replace with the real address + CEP.
-    addressLines: ['[ Endereço a definir ]', 'Rua · Bairro · Cidade — Estado', 'CEP 00000-000'],
-    mapsUrl: 'https://maps.google.com',
+    addressLines: [
+      'Estr. Lourenço Baggio Coradin, 1150',
+      'Jardim Daher · Campina Grande do Sul — PR',
+      'CEP 83430-000',
+    ],
+    mapsUrl: 'https://maps.app.goo.gl/XHdUbXLWonry7ZRF6',
   },
 
   dressCode: {
